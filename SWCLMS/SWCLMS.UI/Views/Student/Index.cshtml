@@ -1,0 +1,45 @@
+﻿@using System.Web.UI.WebControls
+@using SWCLMS.Models.Tables
+@model  SWCLMS.Models.DataResponse<List<SWCLMS.Models.StudentCourse>>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Student Dashboard</h2>
+
+<h4>My Classes</h4>
+
+    @if (@Model.Success)
+    {
+        <fieldset>
+            <div class="row">
+            <div class="col-lg-6">
+
+                @using (Html.BeginForm("ViewGrades", "Student", FormMethod.Post))
+                {
+                    <table>
+                        <tbody>
+                        @foreach (var course in Model.Data)
+                        {
+                            @Html.HiddenFor(c => course.CourseID)
+                            <tr>
+                                <td width="30%">@course.CourseName</td>
+                                <td width="30%">@course.CurrentGrade</td>
+                                <td width="30%"><button class="btn btn-primary">View Grades</button></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                }
+                
+            </div>
+                </div>
+
+        </fieldset>
+    }
+    else
+    {
+        <div class="danger"><p>@Model.Message</p></div>
+    }
+

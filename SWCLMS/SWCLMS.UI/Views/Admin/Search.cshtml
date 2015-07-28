@@ -1,0 +1,79 @@
+﻿@using Microsoft.Ajax.Utilities
+@using SWCLMS.Models
+@model SWCLMS.Models.AdminUserSearch
+
+
+@{
+    ViewBag.Title = "Search";
+}
+<body>
+    <h2>User Search</h2>
+    <div class="row">
+        @using (Html.BeginForm("Search", "Admin", FormMethod.Post))
+        {
+            <p>
+                <div class="col-md-2">
+                    @Html.TextBoxFor(u => u.LastName, new { @class = "form-control", placeholder = "Last name" })
+                </div>
+
+                @*<div class="col-md-2">
+                        <input type="text" id="LastName" value="@Model.LastName" placeholder="Last Name"/>
+                    </div>*@
+
+                <div class="col-md-2">
+                    @Html.TextBoxFor(u => u.FirstName, new { @class = "form-control", placeholder = "First name" })
+                </div>
+
+                @*<div class="col-md-2">
+                        <input type="text" id="FirstName" value="@Model.FirstName" placeholder="First Name"/>
+                    </div>*@
+
+                <div class="col-md-2">
+                    @Html.TextBoxFor(u => u.Email, new { @class = "form-control", placeholder = "Email" })
+                </div>
+
+                @*<div class="col-md-2">
+                        <input type="text" id="Email" value="@Model.Email" placeholder="Email"/>
+                    </div>*@
+
+                <div class="col-md-2">
+                    @Html.DropDownListFor(u => u.SelectedRoleID, Model.Roles, "N/A", new { @class = "form-control" })
+                </div>
+
+                <button>Search</button>
+            </p>
+        }
+    </div>
+
+    <div>
+        @if (Model.AdminUserList != null)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model.AdminUserList)
+                    {
+                        <tr>
+                            <td>@user.LastName</td>
+                            <td>@user.FirstName</td>
+                            <td>@user.Email</td>
+                            <td>@Html.ActionLink("details", "GetUserDetails", "Admin", new { ID = user.UserID }, null)</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+
+</body>
+
+
+

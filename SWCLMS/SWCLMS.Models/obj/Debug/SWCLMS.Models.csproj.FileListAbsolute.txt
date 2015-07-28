@@ -1,0 +1,9 @@
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.Models\bin\Debug\SWCLMS.Models.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.Models\bin\Debug\SWCLMS.Models.pdb
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.Models\bin\Debug\nunit.framework.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.Models\bin\Debug\System.Web.Mvc.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.Models\bin\Debug\nunit.framework.xml
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.Models\bin\Debug\System.Web.Mvc.xml
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.Models\obj\Debug\SWCLMS.Models.csprojResolveAssemblyReference.cache
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.Models\obj\Debug\SWCLMS.Models.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.Models\obj\Debug\SWCLMS.Models.pdb

@@ -1,0 +1,80 @@
+﻿@using System.Activities.Expressions
+@using System.Web.UI.WebControls
+
+@model SWCLMS.UI.Models.LoginRegistrationVM
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2>Software Craftsmanship Guild - Learning Management System</h2>
+
+<div class="row">
+    <div class="col-xs-12 col-md-4">
+        <h4>Existing Users Log In Here.</h4>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { role = "form", id = "frmLogin" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                @Html.LabelFor(m => m.LoginViewModel.Email)
+                @Html.TextBoxFor(m => m.LoginViewModel.Email, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.LoginViewModel.Password)
+                @Html.PasswordFor(m => m.LoginViewModel.Password, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.LoginViewModel.RememberMe)
+                @Html.CheckBoxFor(m => m.LoginViewModel.RememberMe, new { @class = "form-control" })
+            </div>
+            <button class="btn btn-primary">Log In</button>
+        }
+    </div>
+
+    <div class="col-xs-12 col-md-6">
+        <h4>New user? Register Now.</h4>
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { role = "form", id = "frmLogin" }))
+        {
+            @Html.AntiForgeryToken()
+            //@Html.ValidationSummary()
+            <div class="form-group">
+                @Html.LabelFor(m => m.RegisterViewModel.FirstName)
+                @Html.TextBoxFor(m => m.RegisterViewModel.FirstName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RegisterViewModel.FirstName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.RegisterViewModel.LastName)
+                @Html.TextBoxFor(m => m.RegisterViewModel.LastName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RegisterViewModel.LastName)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.RegisterViewModel.Email)
+                @Html.TextBoxFor(m => m.RegisterViewModel.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RegisterViewModel.Email)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.RegisterViewModel.Password)
+                @Html.PasswordFor(m => m.RegisterViewModel.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RegisterViewModel.Password)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.RegisterViewModel.ConfirmPassword)
+                @Html.PasswordFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RegisterViewModel.ConfirmPassword)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.RegisterViewModel.SuggestedRole)
+                @Html.DropDownListFor(m => m.RegisterViewModel.SuggestedRole, Model.RegisterViewModel.SuggestedRoles, new { @class = "form-control" })
+                @*@Html.DropDownList("RegisterViewModel.SuggestedRole", Model.RegisterViewModel.SuggestedRoles, new { @class = "form-control" })*@
+                @Html.ValidationMessageFor(m => m.RegisterViewModel.SuggestedRole)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.RegisterViewModel.GradeLevelID)
+                @Html.DropDownListFor(m => m.RegisterViewModel.GradeLevelID, Model.RegisterViewModel.GradeLevels, "- N/A -", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RegisterViewModel.GradeLevelID)
+            </div>
+
+            <button class="btn btn-primary">Register</button>
+        }
+    </div>
+</div>

@@ -1,0 +1,15 @@
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\SWCLMS.BLL.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\SWCLMS.BLL.pdb
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\Ninject.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\nunit.framework.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\SWCLMS.Data.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\SWCLMS.Models.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\System.Web.Mvc.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\SWCLMS.Data.pdb
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\SWCLMS.Models.pdb
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\Ninject.xml
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\nunit.framework.xml
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\bin\Debug\System.Web.Mvc.xml
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\obj\Debug\SWCLMS.BLL.csprojResolveAssemblyReference.cache
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\obj\Debug\SWCLMS.BLL.dll
+C:\GitHub\SteveGross\SWCLMS\SWCLMS.BLL\obj\Debug\SWCLMS.BLL.pdb

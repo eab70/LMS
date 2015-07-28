@@ -1,0 +1,73 @@
+@model SWCLMS.Models.DataResponse<List<SWCLMS.Models.TeacherCourses>>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Teacher Dashboard</h2>
+<h4>My Classes</h4>
+
+<button type="button" class="btn btn-danger btn-lg" id="AddClass">Add Class</button>
+<div class="col-xs-4">
+    <a href="#" id="lnkCurrent">Current (@Model.Data.Count(c => c.IsArchived == false))</a>
+    <a href="#" id="lnkArchived">Archived (@Model.Data.Count(c => c.IsArchived))</a>
+</div>
+@if (Model.Success)
+{
+    <fieldset>
+        <div class="row"></div>
+        <div class="col-lg-12">
+
+            <table id="currentCourses" class="table table-striped clickableRow">
+                <tbody>
+                    @foreach (var course in Model.Data.Where(c => c.IsArchived == false))
+                    {
+                        <tr onclick="gotoCourse(@course.CourseID)">
+                            <td>@course.CourseName</td>
+                            <td>@course.NumberOfStudents students</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <table id="archivedCourses" class="table table-striped clickableRow">
+                <tbody>
+                    @foreach (var course in Model.Data.Where(c => c.IsArchived))
+                    {
+                        <tr onclick="gotoCourse(@course.CourseID)">
+                            <td>@course.CourseName</td>
+                            <td>@course.NumberOfStudents students</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </fieldset>
+
+}
+else
+{
+    <div class="danger">
+        <p>@Model.Message</p>
+    </div>
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#lnkArchived').click(function () {
+                $('#currentCourses').hide();
+                $('#archivedCourses').show();
+            });
+
+            $('#lnkCurrent').click(function () {
+                $('#archivedCourses').hide();
+                $('#currentCourses').show();
+            });
+        });
+
+        function gotoCourse(id) {
+            window.location = '/Teacher/ShowCourse/' + id;
+        }
+    </script>
+}

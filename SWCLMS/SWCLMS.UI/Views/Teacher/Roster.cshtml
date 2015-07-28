@@ -1,0 +1,123 @@
+﻿@using SWCLMS.Models.Tables
+@model SWCLMS.UI.Models.RosterViewModel
+
+@{
+    ViewBag.Title = "Roster";
+}
+
+<div class="row">
+    @*<div class="col-xs-12">
+        <h2>@Model.Course.CourseName - Roster</h2>
+        <span>
+            @Html.ActionLink("Information", "Course", "Teacher", new { id = @Model.Course.CourseID }, null) |
+            @Html.ActionLink("Roster", "Roster", "Teacher", new { id = @Model.Course.CourseID }, null) |
+            @Html.ActionLink("Gradebook", "Gradebook", "Teacher", new { id = @Model.Course.CourseID }, null)
+        </span>
+    </div>*@
+</div>
+<style type="text/css">.top50 { }</style>
+<div class="row">
+    <div class="col-xs-6">
+        <h3>Roster</h3>
+        @if (Model.CourseRoster != null)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var student in Model.CourseRoster)
+                    {
+                        <tr>
+                            <td>@student.LastName</td>
+                            <td>@student.FirstName</td>
+                            <td>@student.Email</td>
+                            @*<td>@Html.ActionLink("Delete", "RosterRemove", "Teacher", new { ID = user.RosterID }, new{@class= "btn btn-danger"})</td>*@
+                            <td>
+                                @using (Html.BeginForm("RosterRemove", "Teacher", FormMethod.Post))
+                                {
+                                    @*@Html.Hidden("CourseID", Model.Course.CourseID)*@
+                                    @Html.Hidden("RosterId", student.RosterID)
+                                    <button class="btn btn-danger" onclick="confirm('Are you sure you want to delete this student?');">Delete</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+    <div class="col-xs-6">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>Add Student</h3>
+                <fieldset>
+                    @using (Html.BeginForm("Roster", "Teacher", FormMethod.Post))
+                    {
+                        <div class="form-group col-xs-5">
+                            <label>Last Name</label>
+                            <p>@Html.TextBoxFor(u => u.LastName)</p>
+                        </div>
+                        <div class="form-group col-xs-5" style="padding-top: -20px">
+                            <label>Grade Level</label>
+                            <p>@Html.DropDownListFor(u => u.GradeLevelID, Model.GradeLevels, "- SELECT -", new {@class = "form-control"})</p>
+                        </div>
+                        <div class="form-group col-xs-2" style="padding-top: 22px">
+                            <button class="btn btn-primary">Search</button>
+                        </div>
+                    }
+                </fieldset>
+            </div>
+            @if (Model.StudentSearchResults != null)
+            {
+                <div class="col-xs-12">
+                    <h3>Results</h3>
+                    <hr/>
+                    @if (Model.StudentSearchResults.Count > 0)
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Grade</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach (var student in Model.StudentSearchResults)
+                            {
+                                <tr>
+                                    <td>@student.FirstName</td>
+                                    <td>@student.LastName</td>
+                                    <td>@student.GradeLevelName</td>
+                                    <td>
+                                        @using (Html.BeginForm("RosterAdd", "Teacher", FormMethod.Post))
+                                        {
+                                                @*@Html.Hidden("CourseID", Model.Course.CourseID)*@
+                                            @Html.Hidden("UserID", student.UserID)
+                                            <button class="btn btn-success">Add</button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>
+                            No students found.
+                        </p>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</div>

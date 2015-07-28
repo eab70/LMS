@@ -1,0 +1,28 @@
+﻿@using System.Web.UI.WebControls
+@model SWCLMS.Models.DataResponse<List<SWCLMS.Models.Tables.LmsUser>>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body>
+    <h2>Parent Dashboard</h2>
+    <div class="row">
+        @using (Html.BeginForm("Search", "Admin", FormMethod.Post))
+        {
+            <div class="col-xs-12">
+                <table class="table table-striped">
+                    <tbody>
+                        @foreach (var user in Model.Data)
+                        {
+                            <tr>
+                                <td>@user.FirstName @user.LastName</td>
+                                <td><button>View Courses</button></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</body>

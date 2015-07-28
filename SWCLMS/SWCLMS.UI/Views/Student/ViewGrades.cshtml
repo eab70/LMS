@@ -1,0 +1,28 @@
+﻿@*@model  SWCLMS.Models.Tables.RosterAssignment*@
+@model SWCLMS.UI.Models.StudentCourseAssignmentGradesVM
+
+@{
+    ViewBag.Title = "ViewGrades";
+}
+
+<h2>View Grades</h2>
+
+<p>Sorry, no grades yet.</p>
+
+@*@Model.Assignments
+
+<div class="col-xs-12">
+    <table class="table table-striped">
+        <tbody>
+    
+        @foreach (var user in Model.Assignments)
+         {
+             <tr>
+                 <td>@user.AssignmentID</td>
+                 <td>@user.Percentage</td>
+                 <td>@user.Grade</td>
+             </tr>
+        }
+    </tbody>
+    </table>
+</div>*@

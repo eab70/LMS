@@ -1,0 +1,65 @@
+﻿@using System.Collections.Concurrent
+@model SWCLMS.Models.Tables.Course
+@{
+    ViewBag.Title = "ShowCourse";
+}
+
+<h2>@Model.CourseName</h2>
+
+<div class="row">
+    <div class="col-xs-12 col-sm-6">
+        <h2>User Details</h2>
+        @using (Html.BeginForm("EditCourseDetails", "Teacher", FormMethod.Post))
+        {
+            <div id="left" style="clear: both;">
+                <div style="float: left;"></div>
+                <div class="form-group">
+                    @Html.HiddenFor(c => c.CourseID)
+                </div>
+
+                <div class="form-group">
+                    <label>Class Name</label>
+                    <p>@Html.TextBoxFor(c => c.CourseName)</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Subject</label>
+                    <p>@Html.DropDownListFor(c => c.SubjectID, (SelectList)ViewBag.AvailableSubjects)</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <p>@Html.TextBoxFor(c => c.StartDate)</p>
+                </div>
+
+                <div class="form-group">
+                    <label>End Date</label>
+                    <p>@Html.TextBoxFor(c => c.EndDate)</p>
+                </div>
+            </div>
+
+            <div id="right" style="clear:both;">
+                <div class="form-group">
+                    <label>Grade Level</label>
+                    <p>@Html.DropDownListFor(c => c.GradeLevel, Model.GradeLevels, "N/A", new { @class = "form-control" })</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Archive</label>
+                    <p>@Html.CheckBoxFor(c => c.IsArchived)</p>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <p>@Html.TextAreaFor(c => c.CourseDescription)</p>
+                </div>
+
+                @Html.ActionLink("cancel", "Index", "Teacher")
+                <button class="btn btn-primary">Save</button>
+            </div>
+        }
+    </div>
+</div>
+
+
+

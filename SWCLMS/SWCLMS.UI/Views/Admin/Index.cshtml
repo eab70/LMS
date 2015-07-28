@@ -1,0 +1,42 @@
+﻿@model SWCLMS.Models.DataResponse<List<SWCLMS.Models.Tables.LmsUser>>
+
+@{
+    ViewBag.Title = "Index";
+}
+<body>
+<h2>Admin Dashboard</h2>
+
+<div class="row">
+    <div class="col-xs-12">
+        <h4>Unassigned Users</h4>      
+    </div>
+    <div class="col-xs-12">
+        @Html.ActionLink("search for users", "Search", "Admin")
+    </div>
+    <div class="col-xs-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Email</th>
+                    <th>Suggested Role</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Data)
+                {
+                    <tr>
+                        <td>@user.LastName</td>
+                        <td>@user.FirstName</td>
+                        <td>@user.Email</td>
+                        <td>@user.SuggestedRole</td>
+                        <td>@Html.ActionLink("details", "GetUserDetails", "Admin", new{ID=user.UserID}, null)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+    </body>
